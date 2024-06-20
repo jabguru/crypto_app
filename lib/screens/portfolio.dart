@@ -12,35 +12,44 @@ class PortfolioScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: Padding(
           padding: EdgeInsets.symmetric(horizontal: eqW(24.0)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomAppBar(title: 'Portfolio'),
               VerticalSpacing(eqH(29.0)),
-              Text(
-                '\$6,242.50',
-                style: Theme.of(context).textTheme.displayLarge,
-              ),
-              VerticalSpacing(eqH(4.0)),
-              RichText(
-                text: TextSpan(
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  children: const [
-                    TextSpan(
-                        text: '+1.56% (\$97.38) ',
-                        style: TextStyle(color: kPrimaryPurple)),
-                    TextSpan(text: 'Overall'),
-                  ],
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '\$6,242.50',
+                        style: Theme.of(context).textTheme.displayLarge,
+                      ),
+                      VerticalSpacing(eqH(4.0)),
+                      RichText(
+                        text: TextSpan(
+                          style: Theme.of(context).textTheme.bodyMedium,
+                          children: const [
+                            TextSpan(
+                                text: '+1.56% (\$97.38) ',
+                                style: TextStyle(color: kPrimaryPurple)),
+                            TextSpan(text: 'Overall'),
+                          ],
+                        ),
+                      ),
+                      VerticalSpacing(eqH(48.0)),
+                      const PorfolioBalanceRing(),
+                      VerticalSpacing(eqH(48.0)),
+                      const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
+                      const CoinWidget(name: 'Ethereum', price: '1,225.85'),
+                      const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
+                    ],
+                  ),
                 ),
               ),
-              VerticalSpacing(eqH(48.0)),
-              const PorfolioBalanceRing(),
-              VerticalSpacing(eqH(48.0)),
-              const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
-              const CoinWidget(name: 'Ethereum', price: '1,225.85'),
-              const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
             ],
           ),
         ),
