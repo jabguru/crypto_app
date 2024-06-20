@@ -47,7 +47,10 @@ class OnboardingScreen extends StatelessWidget {
                       ),
                     ),
                     VerticalSpacing(eqH(24.0)),
-                    CustomButton(),
+                    CustomButton(
+                      text: 'Get Started',
+                      onTap: () {},
+                    ),
                     VerticalSpacing(eqH(16.0)),
                   ],
                 ),
