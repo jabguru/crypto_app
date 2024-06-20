@@ -1,6 +1,6 @@
 import 'package:crypto_app/constants/size.dart';
 import 'package:crypto_app/gen/assets.gen.dart';
-import 'package:crypto_app/screens/home.dart';
+import 'package:crypto_app/screens/base_screen.dart';
 import 'package:crypto_app/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +49,7 @@ class OnboardingScreen extends StatelessWidget {
                       onTap: () => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                          builder: (context) => BaseScreen(),
                         ),
                       ),
                     ),
