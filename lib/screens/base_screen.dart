@@ -1,4 +1,5 @@
 import 'package:crypto_app/screens/home.dart';
+import 'package:crypto_app/screens/portfolio.dart';
 import 'package:crypto_app/services/base_screen.dart';
 import 'package:crypto_app/widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class _BaseScreenState extends State<BaseScreen> {
           physics: const NeverScrollableScrollPhysics(),
           children: const <Widget>[
             HomeScreen(),
-            SizedBox.shrink(),
+            PortfolioScreen(),
             SizedBox.shrink(),
             SizedBox.shrink(),
           ],

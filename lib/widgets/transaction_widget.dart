@@ -39,6 +39,7 @@ class TransactionWidget extends StatelessWidget {
                     ),
                   ],
                 ),
+                VerticalSpacing(eqH(2.0)),
                 Text(
                   '\$812.10 \n30 Jul 2022, 3.30 PM',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
