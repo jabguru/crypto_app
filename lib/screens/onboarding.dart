@@ -1,6 +1,6 @@
-import 'package:crypto_app/constants/colors.dart';
 import 'package:crypto_app/constants/size.dart';
 import 'package:crypto_app/gen/assets.gen.dart';
+import 'package:crypto_app/screens/home.dart';
 import 'package:crypto_app/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +10,7 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kScaffoldColor,
-        elevation: 0.0,
-      ),
+      appBar: AppBar(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +46,12 @@ class OnboardingScreen extends StatelessWidget {
                     VerticalSpacing(eqH(24.0)),
                     CustomButton(
                       text: 'Get Started',
-                      onTap: () {},
+                      onTap: () => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      ),
                     ),
                     VerticalSpacing(eqH(16.0)),
                   ],

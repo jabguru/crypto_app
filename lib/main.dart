@@ -21,6 +21,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
         scaffoldBackgroundColor: kScaffoldColor,
         fontFamily: FontFamily.nunitoSans,
+        appBarTheme: AppBarTheme(
+          backgroundColor: kScaffoldColor,
+          elevation: 0.0,
+        ),
         textTheme: TextTheme(
           displayLarge: TextStyle(
             fontFamily: FontFamily.clashGrotesk,
@@ -37,6 +41,11 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w700,
             color: kLightGrey,
             fontSize: 17.0,
+          ),
+          bodySmall: TextStyle(
+            fontWeight: FontWeight.w600,
+            color: kSnowWhite,
+            fontSize: 15.0,
           ),
         ),
       ),
