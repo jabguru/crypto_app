@@ -23,7 +23,6 @@ class BaseScreenService {
         );
       }
     } catch (e) {
-      print(e);
       if (basePageController.hasClients) {
         basePageController.jumpToPage(getPageIndex(screen));
       }

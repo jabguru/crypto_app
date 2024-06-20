@@ -6,10 +6,10 @@ class CoinWidget extends StatelessWidget {
   final String name;
   final String price;
   const CoinWidget({
-    Key? key,
+    super.key,
     required this.name,
     required this.price,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class CoinWidget extends StatelessWidget {
       margin: EdgeInsets.only(bottom: eqH(16.0)),
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundColor: Colors.white,
             radius: 16.0,
           ),

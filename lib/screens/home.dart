@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomAppBar(title: 'Home'),
+                    const CustomAppBar(title: 'Home'),
                     VerticalSpacing(eqH(33.0)),
                     Text(
                       'Your balance',
@@ -94,16 +94,16 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   VerticalSpacing(eqH(13.0)),
-                  TransactionWidget(),
+                  const TransactionWidget(),
                   VerticalSpacing(eqH(30.0)),
                   Text(
                     'Watchlist',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   VerticalSpacing(eqH(16.0)),
-                  CoinWidget(name: 'Bitcoin', price: '21,262.60'),
-                  CoinWidget(name: 'Ethereum', price: '1,225.85'),
-                  CoinWidget(name: 'Bitcoin', price: '21,262.60'),
+                  const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
+                  const CoinWidget(name: 'Ethereum', price: '1,225.85'),
+                  const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
                 ],
               ),
             ),

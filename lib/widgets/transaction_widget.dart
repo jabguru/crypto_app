@@ -17,7 +17,7 @@ class TransactionWidget extends StatelessWidget {
       padding: EdgeInsets.all(eqW(12.0)),
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundColor: Colors.white,
             radius: 16.0,
           ),

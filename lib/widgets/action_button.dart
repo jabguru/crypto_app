@@ -6,10 +6,10 @@ class ActionButton extends StatelessWidget {
   final Widget icon;
   final String text;
   const ActionButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

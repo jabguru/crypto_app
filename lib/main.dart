@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
         scaffoldBackgroundColor: kScaffoldColor,
         fontFamily: FontFamily.nunitoSans,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: kScaffoldColor,
           elevation: 0.0,
         ),
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           displayLarge: TextStyle(
             fontFamily: FontFamily.clashGrotesk,
             fontWeight: FontWeight.w600,

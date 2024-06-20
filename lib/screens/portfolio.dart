@@ -17,7 +17,7 @@ class PortfolioScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomAppBar(title: 'Portfolio'),
+              const CustomAppBar(title: 'Portfolio'),
               VerticalSpacing(eqH(29.0)),
               Text(
                 '\$6,242.50',
@@ -27,7 +27,7 @@ class PortfolioScreen extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   style: Theme.of(context).textTheme.bodyMedium,
-                  children: [
+                  children: const [
                     TextSpan(
                         text: '+1.56% (\$97.38) ',
                         style: TextStyle(color: kPrimaryPurple)),
@@ -36,11 +36,11 @@ class PortfolioScreen extends StatelessWidget {
                 ),
               ),
               VerticalSpacing(eqH(48.0)),
-              PorfolioBalanceRing(),
+              const PorfolioBalanceRing(),
               VerticalSpacing(eqH(48.0)),
-              CoinWidget(name: 'Bitcoin', price: '21,262.60'),
-              CoinWidget(name: 'Ethereum', price: '1,225.85'),
-              CoinWidget(name: 'Bitcoin', price: '21,262.60'),
+              const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
+              const CoinWidget(name: 'Ethereum', price: '1,225.85'),
+              const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
             ],
           ),
         ),

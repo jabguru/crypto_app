@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 class CustomAppBar extends StatelessWidget {
   final String title;
   const CustomAppBar({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget {
               .bodyLarge
               ?.copyWith(color: kLightGrey),
         ),
-        HorizontalSpacing(24.0)
+        const HorizontalSpacing(24.0)
       ],
     );
   }
