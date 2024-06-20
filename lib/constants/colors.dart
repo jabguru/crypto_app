@@ -6,6 +6,7 @@ const Color kStormGrey = Color(0xFFA7A7CC);
 const Color kLightGrey = Color(0xFFE4E4F0);
 const Color kSnowWhite = Color(0xFFF2F2FA);
 const Color kPrimaryPurple = Color(0xFF7878FA);
+const Color kDarkGrey = Color(0xFF232336);
 
 const Gradient kPurplePinkGradient = LinearGradient(
   colors: [Color(0xFF6262D9), Color(0xFF9D62D9)],

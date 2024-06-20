@@ -2,7 +2,9 @@ import 'package:crypto_app/constants/colors.dart';
 import 'package:crypto_app/constants/size.dart';
 import 'package:crypto_app/gen/assets.gen.dart';
 import 'package:crypto_app/widgets/action_button.dart';
+import 'package:crypto_app/widgets/coin_widget.dart';
 import 'package:crypto_app/widgets/custom_app_bar.dart';
+import 'package:crypto_app/widgets/transaction_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -15,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           Padding(
             padding:
-                EdgeInsets.fromLTRB(eqW(8.0), eqW(4.0), eqW(8.0), eqW(8.0)),
+                EdgeInsets.fromLTRB(eqW(8.0), eqW(4.0), eqW(8.0), eqW(0.0)),
             child: Container(
               padding:
                   EdgeInsets.fromLTRB(eqW(16.0), 0.0, eqW(16.0), eqW(13.0)),
@@ -68,7 +70,44 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.all(eqW(24.0)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Transactions',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      Text(
+                        'See all',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium
+                            ?.copyWith(color: kPrimaryPurple),
+                      ),
+                    ],
+                  ),
+                  VerticalSpacing(eqH(13.0)),
+                  TransactionWidget(),
+                  VerticalSpacing(eqH(30.0)),
+                  Text(
+                    'Watchlist',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  VerticalSpacing(eqH(16.0)),
+                  CoinWidget(name: 'Bitcoin', price: '21,262.60'),
+                  CoinWidget(name: 'Ethereum', price: '1,225.85'),
+                  CoinWidget(name: 'Bitcoin', price: '21,262.60'),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
