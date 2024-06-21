@@ -2,10 +2,19 @@ import 'dart:math';
 
 import 'package:crypto_app/constants/colors.dart';
 import 'package:crypto_app/constants/size.dart';
+import 'package:crypto_app/models/coin.dart';
 import 'package:flutter/material.dart';
 
 class PorfolioBalanceRing extends StatefulWidget {
-  const PorfolioBalanceRing({super.key});
+  final Coin firstCoin;
+  final Coin secondCoin;
+  final Coin thirdCoin;
+  const PorfolioBalanceRing({
+    super.key,
+    required this.firstCoin,
+    required this.secondCoin,
+    required this.thirdCoin,
+  });
 
   @override
   State<PorfolioBalanceRing> createState() => _PorfolioBalanceRingState();
@@ -13,6 +22,47 @@ class PorfolioBalanceRing extends StatefulWidget {
 
 class _PorfolioBalanceRingState extends State<PorfolioBalanceRing> {
   int _selected = 0;
+
+  String get _getCoinName {
+    switch (_selected) {
+      case 0:
+        return widget.firstCoin.name;
+      case 1:
+        return widget.secondCoin.name;
+      case 2:
+        return widget.thirdCoin.name;
+      default:
+        return '';
+    }
+  }
+
+  double get _getCoinPrice {
+    switch (_selected) {
+      case 0:
+        return widget.firstCoin.currentPrice;
+      case 1:
+        return widget.secondCoin.currentPrice;
+      case 2:
+        return widget.thirdCoin.currentPrice;
+      default:
+        return 0.0;
+    }
+  }
+
+  String get _getCoinPriceChange {
+    switch (_selected) {
+      case 0:
+        return '${widget.firstCoin.priceChangePercentage.toStringAsFixed(2)}% (\$${widget.firstCoin.priceChange.toStringAsFixed(2)})';
+      case 1:
+        return '${widget.secondCoin.priceChangePercentage.toStringAsFixed(2)}% (\$${widget.secondCoin.priceChange.toStringAsFixed(2)})';
+
+      case 2:
+        return '${widget.thirdCoin.priceChangePercentage.toStringAsFixed(2)}% (\$${widget.thirdCoin.priceChange.toStringAsFixed(2)})';
+
+      default:
+        return '';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,19 +84,18 @@ class _PorfolioBalanceRingState extends State<PorfolioBalanceRing> {
                 angle: pi,
                 child: CustomPaint(
                   painter: BalanceCustomPainter(
-                    first: 1,
-                    second: 2,
-                    third: 3,
+                    first: widget.firstCoin.currentPrice,
+                    second: widget.secondCoin.currentPrice,
+                    third: widget.thirdCoin.currentPrice,
                     selected: _selected,
                   ),
                 ),
               ),
             ),
-            // TODO: UPDATE TEXTS WITH SELECTED
             Column(
               children: [
                 Text(
-                  'Solana balance',
+                  '$_getCoinName balance',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge
@@ -54,12 +103,12 @@ class _PorfolioBalanceRingState extends State<PorfolioBalanceRing> {
                 ),
                 VerticalSpacing(eqH(4.0)),
                 Text(
-                  '\$1560.60',
+                  '\$$_getCoinPrice',
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 VerticalSpacing(eqH(4.0)),
                 Text(
-                  '+0.64% (\$9.98)',
+                  _getCoinPriceChange,
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium
@@ -76,9 +125,9 @@ class _PorfolioBalanceRingState extends State<PorfolioBalanceRing> {
 
 class BalanceCustomPainter extends CustomPainter {
   final int selected;
-  final int first;
-  final int second;
-  final int third;
+  final double first;
+  final double second;
+  final double third;
   BalanceCustomPainter({
     required this.selected,
     required this.first,

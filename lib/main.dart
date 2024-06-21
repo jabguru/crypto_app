@@ -3,9 +3,10 @@ import 'package:crypto_app/constants/global_variables.dart';
 import 'package:crypto_app/gen/fonts.gen.dart';
 import 'package:crypto_app/screens/onboarding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

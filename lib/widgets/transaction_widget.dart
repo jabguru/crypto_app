@@ -1,5 +1,6 @@
 import 'package:crypto_app/constants/colors.dart';
 import 'package:crypto_app/constants/size.dart';
+import 'package:crypto_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class TransactionWidget extends StatelessWidget {
@@ -17,10 +18,7 @@ class TransactionWidget extends StatelessWidget {
       padding: EdgeInsets.all(eqW(12.0)),
       child: Row(
         children: [
-          const CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 16.0,
-          ),
+          Assets.images.ethereumIcon.svg(width: 32.0),
           HorizontalSpacing(eqW(12.0)),
           Expanded(
             child: Column(

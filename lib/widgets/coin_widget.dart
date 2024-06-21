@@ -1,14 +1,17 @@
 import 'package:crypto_app/constants/colors.dart';
 import 'package:crypto_app/constants/size.dart';
+import 'package:crypto_app/widgets/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CoinWidget extends StatelessWidget {
   final String name;
   final String price;
+  final String image;
   const CoinWidget({
     super.key,
     required this.name,
     required this.price,
+    required this.image,
   });
 
   @override
@@ -22,9 +25,10 @@ class CoinWidget extends StatelessWidget {
       margin: EdgeInsets.only(bottom: eqH(16.0)),
       child: Row(
         children: [
-          const CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 16.0,
+          CustomCachedNetworkImage(
+            mediaUrl: image,
+            width: 32.0,
+            height: 32.0,
           ),
           HorizontalSpacing(eqW(12.0)),
           Expanded(

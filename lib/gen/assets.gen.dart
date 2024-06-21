@@ -18,6 +18,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/Cards.svg
   SvgGenImage get cards => const SvgGenImage('assets/images/Cards.svg');
 
+  /// File path: assets/images/Ethereum icon.svg
+  SvgGenImage get ethereumIcon =>
+      const SvgGenImage('assets/images/Ethereum icon.svg');
+
   /// File path: assets/images/Minus icon.svg
   SvgGenImage get minusIcon =>
       const SvgGenImage('assets/images/Minus icon.svg');
@@ -48,6 +52,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<SvgGenImage> get values => [
         cards,
+        ethereumIcon,
         minusIcon,
         plusIcon,
         tabAccount,

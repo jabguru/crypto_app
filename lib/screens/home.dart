@@ -1,17 +1,22 @@
 import 'package:crypto_app/constants/colors.dart';
 import 'package:crypto_app/constants/size.dart';
 import 'package:crypto_app/gen/assets.gen.dart';
+import 'package:crypto_app/models/coin.dart';
+import 'package:crypto_app/providers/providers.dart';
 import 'package:crypto_app/widgets/action_button.dart';
 import 'package:crypto_app/widgets/coin_widget.dart';
 import 'package:crypto_app/widgets/custom_app_bar.dart';
 import 'package:crypto_app/widgets/transaction_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final coins = ref.watch(coinsProvider(count: 3));
+
     return Scaffold(
       body: Column(
         children: [
@@ -72,10 +77,12 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.all(eqW(24.0)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            child: RefreshIndicator.adaptive(
+              onRefresh: () async => ref.invalidate(coinsProvider),
+              color: kLightGrey,
+              backgroundColor: kDarkGrey,
+              child: ListView(
+                padding: EdgeInsets.all(eqW(24.0)),
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,9 +108,26 @@ class HomeScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   VerticalSpacing(eqH(16.0)),
-                  const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
-                  const CoinWidget(name: 'Ethereum', price: '1,225.85'),
-                  const CoinWidget(name: 'Bitcoin', price: '21,262.60'),
+                  Center(
+                    child: coins.when(
+                      data: (List<Coin> coins) => Column(
+                        children: coins
+                            .map(
+                              (coin) => CoinWidget(
+                                name: coin.name,
+                                price: coin.currentPrice.toString(),
+                                image: coin.image,
+                              ),
+                            )
+                            .toList(),
+                      ),
+                      error: (err, stck) => Text(
+                        'An error occured!',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                      loading: () => const CircularProgressIndicator.adaptive(),
+                    ),
+                  ),
                 ],
               ),
             ),
